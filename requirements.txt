@@ -1,0 +1,4 @@
+cliff>=2.3.0  # Apache-2.0
+kanboard>=1.0.1  # MIT
+pbr>=1.8  # Apache-2.0
+setuptools>=16.0,!=24.0.0  # PSF/ZPL

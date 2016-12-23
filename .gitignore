@@ -1,0 +1,8 @@
+.tox
+*.pyc
+*.egg-info
+*.eggs
+dist
+build
+AUTHORS
+ChangeLog
