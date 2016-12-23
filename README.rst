@@ -44,14 +44,15 @@ Display application version:
 
 .. code-block:: bash
 
-    kanboard app version
+    > kanboard app version
     1.0.35
 
 Display project information:
 
 .. code-block:: bash
 
-    kanboard project show 1
+    > kanboard project show 1
+
     +-------------+--------------------------------------------------------------------------------+
     | Field       | Value                                                                          |
     +-------------+--------------------------------------------------------------------------------+
@@ -61,9 +62,11 @@ Display project information:
     | Board URL   | http://localhost/?controller=BoardViewController&action=show&project_id=1      |
     +-------------+--------------------------------------------------------------------------------+
 
+Display projects list:
+
 .. code-block:: bash
 
-    kanboard project list
+    > kanboard project list
 
     +----+------+--------------------------+--------+---------+--------+
     | ID | Name | Description              | Status | Private | Public |

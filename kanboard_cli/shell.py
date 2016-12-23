@@ -25,8 +25,9 @@ from cliff import commandmanager
 from pbr import version as app_version
 import sys
 
-from kanboard_cli.commands import project
 from kanboard_cli.commands import application
+from kanboard_cli.commands import project
+from kanboard_cli.commands import task
 from kanboard_cli import client
 
 
@@ -80,6 +81,7 @@ class KanboardShell(app.App):
         self.command_manager.add_command('app timezone', application.ShowTimezone)
         self.command_manager.add_command('project show', project.ShowProject)
         self.command_manager.add_command('project list', project.ListProjects)
+        self.command_manager.add_command('task list', task.ListTasks)
 
 
 def main(argv=sys.argv[1:]):

@@ -30,14 +30,14 @@ class ShowProject(show.ShowOne):
     def get_parser(self, prog_name):
         parser = super(ShowProject, self).get_parser(prog_name)
         parser.add_argument(
-            'project',
+            'project_id',
             metavar='<project_id>',
             help='Project ID',
         )
         return parser
 
     def take_action(self, parsed_args):
-        project = self.app.client.get_project_by_id(project_id=parsed_args.project)
+        project = self.app.client.get_project_by_id(project_id=parsed_args.project_id)
 
         if not project:
             raise RuntimeError('Project not found')
