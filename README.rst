@@ -51,7 +51,7 @@ Display project information:
 
 .. code-block:: bash
 
-    python kanboard_cli/shell.py project show 1
+    kanboard project show 1
     +-------------+--------------------------------------------------------------------------------+
     | Field       | Value                                                                          |
     +-------------+--------------------------------------------------------------------------------+

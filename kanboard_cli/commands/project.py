@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+from cliff import lister
 from cliff import show
 
 
@@ -48,3 +49,9 @@ class ShowProject(show.ShowOne):
         columns = ('ID', 'Name', 'Description', 'Board URL')
         data = (project['id'], project['name'], project['description'], project['url']['board'])
         return columns, data
+
+
+class ListProject(lister.Lister):
+    """List projects that belongs to the connected user"""
+
+    def take_action(self, parsed_args):
