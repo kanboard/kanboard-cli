@@ -39,6 +39,7 @@ class KanboardShell(app.App):
             command_manager=commandmanager.CommandManager('kanboard.cli'),
             deferred_help=True)
         self.client = None
+        self.is_super_user = True
 
     def build_option_parser(self, description, version, argparse_kwargs=None):
         parser = super(KanboardShell, self).build_option_parser(
@@ -71,10 +72,14 @@ class KanboardShell(app.App):
         return parser
 
     def initialize_app(self, argv):
-        self.client = client.ClientManager(self.options).get_client()
+        client_manager = client.ClientManager(self.options)
+        self.client = client_manager.get_client()
+        self.is_super_user = client_manager.is_super_user()
+
         self.command_manager.add_command('app version', application.ShowVersion)
         self.command_manager.add_command('app timezone', application.ShowTimezone)
         self.command_manager.add_command('project show', project.ShowProject)
+        self.command_manager.add_command('project list', project.ListProjects)
 
 
 def main(argv=sys.argv[1:]):

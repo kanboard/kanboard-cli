@@ -2,8 +2,8 @@
 Kanboard Command Line Client
 ============================
 
-.. image:: https://travis-ci.org/kanboard/kanboard_cli.svg?branch=master
-    :target: https://travis-ci.org/kanboard/kanboard_cli
+.. image:: https://travis-ci.org/kanboard/kanboard-cli.svg?branch=master
+    :target: https://travis-ci.org/kanboard/kanboard-cli
 
 Kanboard command line client.
 
@@ -61,3 +61,13 @@ Display project information:
     | Board URL   | http://localhost/?controller=BoardViewController&action=show&project_id=1      |
     +-------------+--------------------------------------------------------------------------------+
 
+.. code-block:: bash
+
+    kanboard project list
+
+    +----+------+--------------------------+--------+---------+--------+
+    | ID | Name | Description              | Status | Private | Public |
+    +----+------+--------------------------+--------+---------+--------+
+    | 7  | Demo | My _project_ is awesome. | Active | False   | True   |
+    | 8  | test |                          | Active | False   | False  |
+    +----+------+--------------------------+--------+---------+--------+
