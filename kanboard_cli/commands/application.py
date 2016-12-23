@@ -23,17 +23,17 @@
 from cliff import command
 
 
+class ShowTimezone(command.Command):
+    """Show Kanboard timezone"""
+
+    def take_action(self, parsed_args):
+        timezone = self.app.client.get_timezone()
+        self.app.stdout.write('{}\n'.format(timezone))
+
+
 class ShowVersion(command.Command):
     """Show Kanboard version"""
 
     def take_action(self, parsed_args):
         version = self.app.client.get_version()
-        self.app.stdout.write('{}\n'.format(version))
-
-
-class ShowTimezone(command.Command):
-    """Show Kanboard timezone"""
-
-    def take_action(self, parsed_args):
-        version = self.app.client.get_timezone()
         self.app.stdout.write('{}\n'.format(version))

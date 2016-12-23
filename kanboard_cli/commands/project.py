@@ -24,6 +24,32 @@ from cliff import lister
 from cliff import show
 
 
+class ListProjects(lister.Lister):
+    """List projects that belongs to the connected user"""
+
+    def take_action(self, parsed_args):
+        columns = ('ID', 'Name', 'Description', 'Status', 'Private', 'Public')
+
+        if self.app.is_super_user:
+            projects = self.app.client.get_all_projects()
+        else:
+            projects = self.app.client.get_my_projects()
+
+        return columns, self._format_projects(projects)
+
+    @staticmethod
+    def _format_projects(projects):
+        lines = []
+        for project in projects:
+            lines.append((project['id'],
+                          project['name'],
+                          project['description'] or '',
+                          'Active' if int(project['is_active']) == 1 else 'Inactive',
+                          int(project['is_private']) == 1,
+                          int(project['is_public']) == 1))
+        return lines
+
+
 class ShowProject(show.ShowOne):
     """Show project details"""
 
@@ -52,28 +78,3 @@ class ShowProject(show.ShowOne):
                 project['description'] or '',
                 project['url']['board'])
         return columns, data
-
-
-class ListProjects(lister.Lister):
-    """List projects that belongs to the connected user"""
-
-    def take_action(self, parsed_args):
-        columns = ('ID', 'Name', 'Description', 'Status', 'Private', 'Public')
-        if self.app.is_super_user:
-            projects = self.app.client.get_all_projects()
-        else:
-            projects = self.app.client.get_my_projects()
-
-        return columns, self._format_projects(projects)
-
-    @staticmethod
-    def _format_projects(projects):
-        lines = []
-        for project in projects:
-            lines.append((project['id'],
-                          project['name'],
-                          project['description'] or '',
-                          'Active' if int(project['is_active']) == 1 else 'Inactive',
-                          int(project['is_private']) == 1,
-                          int(project['is_public']) == 1))
-        return lines

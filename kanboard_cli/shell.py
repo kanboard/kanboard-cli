@@ -81,6 +81,7 @@ class KanboardShell(app.App):
         self.command_manager.add_command('app timezone', application.ShowTimezone)
         self.command_manager.add_command('project show', project.ShowProject)
         self.command_manager.add_command('project list', project.ListProjects)
+        self.command_manager.add_command('task create', task.CreateTask)
         self.command_manager.add_command('task list', task.ListTasks)
 
 
