@@ -2,9 +2,6 @@
 Kanboard Command Line Client
 ============================
 
-.. image:: https://travis-ci.org/kanboard/kanboard-cli.svg?branch=master
-    :target: https://travis-ci.org/kanboard/kanboard-cli
-
 Kanboard command line client.
 
 - Author: Frédéric Guillot
